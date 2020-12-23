@@ -13,7 +13,7 @@ You can save your time during CP, because you don't need to copy paste input dat
 
 This settings allow C, C++, and Python3.
 
-![Screenshot](/Screenshot.png)
+![Screenshot](./Screenshot.png)
 
 Make sure that .cpp(or .py) files and input.txt, output.txt files needs to be same location.
 
