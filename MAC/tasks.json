@@ -1,0 +1,82 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Remove exe file",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ],
+            "dependsOn": [
+                "Remove dSYM folder"
+            ],
+            "dependsOrder": "sequence"
+        },
+        {
+            "label": "Remove dSYM folder",
+            "type": "shell",
+            "command": "rm",
+            "args": [
+                "-r",
+                "${fileDirname}/${fileBasenameNoExtension}.exe.dSYM"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Compile C++17 for CP (OnlineJudge)",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-g",
+                "-O2",
+                "-D",
+                "__OnlineJudge",
+                "${file}",
+                "-o",
+                "${fileDirname}/${fileBasenameNoExtension}.exe"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Execution C++17 (OnlineJudge)",
+            "command": "${fileDirname}/${fileBasenameNoExtension}.exe",
+            "args": [
+                "<",
+                "${workspaceFolder}/input.txt",
+                ">",
+                "${workspaceFolder}/output.txt"
+            ]
+        },
+        {
+            "label": "C++17 All in One (OnlineJudge)",
+            "type": "shell",
+            "dependsOn": [
+                "Compile C++17 for CP (OnlineJudge)",
+                "Execution C++17 (OnlineJudge)",
+                "Remove exe file"
+            ],
+            "dependsOrder": "sequence",
+            "problemMatcher": [
+                "$gcc"
+            ]
+        },
+        {
+            "type": "shell",
+            "label": "Execution Python3 (OnlineJudge)",
+            "command": [
+                "python3"
+            ],
+            "args": [
+                "${fileDirname}/${fileBasenameNoExtension}.py",
+                "<",
+                "${workspaceFolder}/IO/input.txt",
+                ">",
+                "${workspaceFolder}/IO/output.txt"
+            ],
+            "problemMatcher": []
+        },
+    ]
+}
