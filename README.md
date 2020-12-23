@@ -13,7 +13,7 @@ You can save your time during CP, because you don't need to copy paste input dat
 
 This settings allow C, C++, and Python3.
 
-![Screenshot](./Screenshot.png)
+![Screenshot](https://github.com/CyberFlower/Visual-Code-Settings-For-Competitive-Programming/blob/main/Screenshot.PNG?raw=true)
 
 Make sure that .cpp(or .py) files and input.txt, output.txt files needs to be same location.
 
